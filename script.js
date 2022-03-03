@@ -20,7 +20,7 @@ function multiplication(_state, fn) {
 }
 function division(_state, fn) {
     const { num1, num2 } = _state;
-    const divide = Number(num2) === 0 ? 'lmao' : Number(num1) * Number(num2);
+    const divide = Number(num2) === 0 ? 'lmao' : Number(num1) / Number(num2);
     return fn(divide);
 }
 const display = document.getElementById('display');
@@ -30,7 +30,7 @@ const state = {
     total: '',
     isNum1Negative: false,
     isNum2Negative: false,
-    isFraction: true,
+    isFirstDecimal: true,
     isNextNumber: false,
     isAdd: false,
     isSubtract: false,
@@ -38,187 +38,92 @@ const state = {
     isDivide: false,
 };
 const zero = document.querySelector('.zero');
-zero?.addEventListener('click', () => {
-    if (!state.isNextNumber) {
-        state.num1 += '0';
-        display.textContent = state.num1;
-    }
-    else {
-        state.num2 += '0';
-        display.textContent = state.num2;
-    }
-    state.isNextNumber = false;
-});
+zero?.addEventListener('click', () => { });
 const one = document.querySelector('.one');
-one?.addEventListener('click', () => {
-    if (!state.isNextNumber) {
-        state.num1 += '1';
-        display.textContent = state.num1;
-    }
-    else {
-        state.num2 += '1';
-        display.textContent = state.num2;
-    }
-    state.isNextNumber = false;
-});
+one?.addEventListener('click', () => { });
 const two = document.querySelector('.two');
-two?.addEventListener('click', () => {
-    if (!state.isNextNumber) {
-        state.num1 += '2';
-        display.textContent = state.num1;
-    }
-    else {
-        state.num2 += '2';
-        display.textContent = state.num2;
-    }
-    state.isNextNumber = false;
-});
+two?.addEventListener('click', () => { });
 const three = document.querySelector('.three');
-three?.addEventListener('click', () => {
-    if (!state.isNextNumber) {
-        state.num1 += '3';
-        display.textContent = state.num1;
-    }
-    else {
-        state.num2 += '3';
-        display.textContent = state.num2;
-    }
-    state.isNextNumber = false;
-});
+three?.addEventListener('click', () => { });
 const four = document.querySelector('.four');
-four?.addEventListener('click', () => {
-    if (!state.isNextNumber) {
-        state.num1 += '4';
-        display.textContent = state.num1;
-    }
-    else {
-        state.num2 += '4';
-        display.textContent = state.num2;
-    }
-    state.isNextNumber = false;
-});
+four?.addEventListener('click', () => { });
 const five = document.querySelector('.five');
-five?.addEventListener('click', () => {
-    if (!state.isNextNumber) {
-        state.num1 += '5';
-        display.textContent = state.num1;
-    }
-    else {
-        state.num2 += '5';
-        display.textContent = state.num2;
-    }
-    state.isNextNumber = false;
-});
+five?.addEventListener('click', () => { });
 const six = document.querySelector('.six');
-six?.addEventListener('click', () => {
-    if (!state.isNextNumber) {
-        state.num1 += '6';
-        display.textContent = state.num1;
-    }
-    else {
-        state.num2 += '6';
-        display.textContent = state.num2;
-    }
-    state.isNextNumber = false;
-});
+six?.addEventListener('click', () => { });
 const seven = document.querySelector('.seven');
-seven?.addEventListener('click', () => {
-    if (!state.isNextNumber) {
-        state.num1 += '7';
-        display.textContent = state.num1;
-    }
-    else {
-        state.num2 += '7';
-        display.textContent = state.num2;
-    }
-    state.isNextNumber = false;
-});
+seven?.addEventListener('click', () => { });
 const eight = document.querySelector('.eight');
-eight?.addEventListener('click', () => {
-    if (!state.isNextNumber) {
-        state.num1 += '8';
-        display.textContent = state.num1;
-    }
-    else {
-        state.num2 += '8';
-        display.textContent = state.num2;
-    }
-    state.isNextNumber = false;
-});
+eight?.addEventListener('click', () => { });
 const nine = document.querySelector('.nine');
-nine?.addEventListener('click', () => {
-    if (!state.isNextNumber) {
-        state.num1 += '9';
-        display.textContent = state.num1;
-    }
-    else {
-        state.num2 += '9';
-        display.textContent = state.num2;
-    }
-    state.isNextNumber = false;
-});
+nine?.addEventListener('click', () => { });
 const dot = document.querySelector('.dot');
-dot?.addEventListener('click', () => {
-    state.isFraction ? (state.isNextNumber = false) : (state.isNextNumber = true);
-    state.num1 += '.';
-    state.isFraction = false;
-});
+dot?.addEventListener('click', () => { });
 const clear = document.querySelector('.clear');
 clear?.addEventListener('click', () => {
     window.location.reload();
 });
 const plus = document.querySelector('.plus');
-plus?.addEventListener('click', () => {
-    state.isAdd = true;
-    state.isNextNumber = true;
-});
+plus?.addEventListener('click', () => { });
 const subtract = document.querySelector('.minus');
-subtract?.addEventListener('click', () => {
-    state.isSubtract = true;
-    state.isNextNumber = true;
-});
+subtract?.addEventListener('click', () => { });
 const mult = document.querySelector('.multiply');
-mult?.addEventListener('click', () => {
-    state.isMultiply = true;
-    state.isNextNumber = true;
-});
+mult?.addEventListener('click', () => { });
 const divide = document.querySelector('.divide');
-divide?.addEventListener('click', () => {
-    state.isDivide = true;
-    state.isNextNumber = true;
-});
+divide?.addEventListener('click', () => { });
 const plusMinus = document.querySelector('.plusMinus');
 plusMinus?.addEventListener('click', () => { });
 const percent = document.querySelector('.percent');
 percent?.addEventListener('click', () => { });
 const equal = document.querySelector('.equal');
-equal?.addEventListener('click', () => {
-    switch (true) {
-        case state.isAdd:
-            state.total += addition(state, preciseStr);
-            break;
-        case state.isSubtract:
-            state.total += subtraction(state, preciseStr);
-            break;
-        case state.isMultiply:
-            state.total += multiplication(state, preciseStr);
-            break;
-        case state.isDivide:
-            state.total += division(state, preciseStr);
-            break;
-        default:
-            console.log("shouldn't see this...");
-    }
-    display.textContent = state.total;
-    state.num1 = '';
-    state.num2 = '';
-    state.total = '';
-    state.isNum1Negative = false;
-    state.isNum2Negative = false;
-    state.isFraction = true;
-    state.isNextNumber = false;
-    state.isAdd = false;
-    state.isSubtract = false;
-    state.isMultiply = false;
-    state.isDivide = false;
-});
+equal?.addEventListener('click', () => { });
+// const zero = document.querySelector('.zero')
+// zero?.addEventListener('click', () => {
+// if (!state.isNextNumber) {
+// state.num1 += '0'
+// display.textContent = state.num1
+// } else {
+// state.num2 += '0'
+// display.textContent = state.num2
+// }
+//
+// state.isFirstDecimal = true
+// state.isNextNumber = false
+// })
+// const plus = document.querySelector('.plus')
+// plus?.addEventListener('click', () => {
+// 	state.isAdd = true
+// 	state.isNextNumber = true
+// 	state.isFirstDecimal = true
+// })
+// const equal = document.querySelector('.equal')
+// equal?.addEventListener('click', () => {
+// 	switch (true) {
+// 		case state.isAdd:
+// 			state.total += addition(state, preciseStr)
+// 			break
+// 		case state.isSubtract:
+// 			state.total += subtraction(state, preciseStr)
+// 			break
+// 		case state.isMultiply:
+// 			state.total += multiplication(state, preciseStr)
+// 			break
+// 		case state.isDivide:
+// 			state.total += division(state, preciseStr)
+// 			break
+// 		default:
+// 			console.log("shouldn't see this...")
+// 	}
+// 	display.textContent = state.total
+// 	state.num1 = ''
+// 	state.num2 = ''
+// 	state.total = ''
+// 	state.isNum1Negative = false
+// 	state.isNum2Negative = false
+// 	state.isFirstDecimal = true
+// 	state.isNextNumber = false
+// 	state.isAdd = false
+// 	state.isSubtract = false
+// 	state.isMultiply = false
+// 	state.isDivide = false
+// })
