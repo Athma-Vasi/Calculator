@@ -4,9 +4,49 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css" />
 		<title>Odin-Calculator</title>
 	</head>
-	<body>
+	<body class="body">
+		<div class="container-all">
+			<header class="header">
+				<h1 class="title">Calculator</h1>
+				
+			</header>
+			<div class="history"></div>
+			<input type="text" class="input display" value="0" readonly />
+
+			<div class="container-bttns">
+				<button class="bttn operator bttn-ce" type="button" >CE</button>
+				<button class="bttn operator bttn-c" type="button">C</button>
+				<button class="bttn operator bttn-del" type="button" data-key="Backspace"><==</button>
+				<button	class="bttn operator bttn-divide"type="button"data-key="/">/</button>
+				<!--  -->
+				<button class="bttn operand" type="button" data-key="7" >7</button>
+				<button class="bttn operand" type="button" data-key="8" ">8</button>
+				<button class="bttn operand" type="button" data-key="9" >9</button>
+				<button class="bttn operator bttn-mult" type="button" data-key="*">*</button>
+				<!--  -->
+				<button class="bttn operand" type="button" data-key="4" >4</button>
+				<button class="bttn operand" type="button" data-key="5" >5</button>
+				<button class="bttn operand" type="button" data-key="6" >6</button>
+				<button class="bttn operator bttn-minus" type="button" data-key="-">-</button>
+				<!--  -->
+				<button class="bttn operand" type="button" data-key="1" >1</button>
+				<button class="bttn operand" type="button" data-key="2" >2</button>
+				<button class="bttn operand" type="button" data-key="3" >3</button>
+				<button class="bttn operator bttn-plus" type="button" data-key="+">+</button>
+				<!--  -->
+				<button class="bttn bttn-plusMinus" type="button" >+/-</button>
+				<button class="bttn operand" type="button" data-key="0" >0</button>
+				<button class="bttn bttn-decimal" type="button" data-key=".">.</button>
+				<button class="bttn operator bttn-equals" type="button" data-key="Enter">=</button>
+				<!--  -->
+			</div>
+		</div>
+
+		<!--  -->
+		<!--  -->
 		<script src="./script.js" defer></script>
 	</body>
 </html>
