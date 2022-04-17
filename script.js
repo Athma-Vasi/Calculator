@@ -8,21 +8,19 @@ const mainApp = () => {
     let operator = '';
     let result = '';
     let secondNumberFlag = false; //if false == NOT a secondNumber, true == YES a secondNumber
-    const symbolsArr = ['CE', 'C', '/', '*', '-', '+', '=', '%'];
+    const symbolsArr = ['AC', '/', '*', '-', '+', '=', '%'];
     function handleBttnClick() {
         const { textContent: bttnValue } = this;
         if (displayElement)
-            displayElement.value = bttnValue ?? '';
+            displayElement.textContent = bttnValue ?? '';
         if (this.classList.contains('operator')) {
             if (bttnValue === '+/-')
                 plusMinusFN();
             if (symbolsArr.includes(`${bttnValue}`)) {
                 if (displayElement)
-                    displayElement.value = '';
+                    displayElement.textContent = '';
             }
-            if (bttnValue === 'CE')
-                clearDisplayFN(displayElement);
-            if (bttnValue === 'C')
+            if (bttnValue === 'AC')
                 clearAllFN(displayElement);
             if (!firstOperand && !secondOperand)
                 return;
@@ -40,7 +38,7 @@ const mainApp = () => {
                 if (bttnValue !== '=') {
                     result = solveFN();
                     if (displayElement)
-                        displayElement.value = result;
+                        displayElement.textContent = result;
                     operator = bttnValue ?? '';
                     firstOperand = result;
                     secondOperand = '';
@@ -49,7 +47,7 @@ const mainApp = () => {
                 else if (bttnValue === '=') {
                     result = solveFN();
                     if (displayElement)
-                        displayElement.value = result;
+                        displayElement.textContent = result;
                     operator = '';
                     firstOperand = result;
                     secondOperand = '';
@@ -70,7 +68,7 @@ const mainApp = () => {
                 else {
                     firstOperand += bttnValue ?? '';
                     if (displayElement)
-                        displayElement.value = firstOperand;
+                        displayElement.textContent = firstOperand;
                 }
             }
             else {
@@ -79,7 +77,7 @@ const mainApp = () => {
                 else {
                     secondOperand += bttnValue ?? '';
                     if (displayElement)
-                        displayElement.value = secondOperand;
+                        displayElement.textContent = secondOperand;
                 }
             }
         }
@@ -92,7 +90,7 @@ const mainApp = () => {
         if (tempDisplayValue?.includes('-')) {
             newTempDisplayValue = tempDisplayValue?.slice(1).join('');
             if (displayElement) {
-                displayElement.value = newTempDisplayValue;
+                displayElement.textContent = newTempDisplayValue;
                 secondNumberFlag
                     ? (secondOperand = newTempDisplayValue)
                     : (firstOperand = newTempDisplayValue);
@@ -101,21 +99,12 @@ const mainApp = () => {
         else {
             newTempDisplayValue = ['-', ...(tempDisplayValue ?? '')].join('');
             if (displayElement) {
-                displayElement.value = newTempDisplayValue;
+                displayElement.textContent = newTempDisplayValue;
                 secondNumberFlag
                     ? (secondOperand = newTempDisplayValue)
                     : (firstOperand = newTempDisplayValue);
             }
         }
-    }
-    function clearDisplayFN(_displayElement) {
-        firstOperand = '';
-        secondOperand = '';
-        operator = '';
-        result = '';
-        secondNumberFlag = false;
-        if (_displayElement)
-            _displayElement.value = '';
     }
     function clearAllFN(_displayElement) {
         firstOperand = '';
@@ -124,7 +113,7 @@ const mainApp = () => {
         result = '';
         secondNumberFlag = false;
         if (_displayElement)
-            _displayElement.value = '';
+            _displayElement.textContent = '';
     }
     function solveFN() {
         const num1 = parseFloat(firstOperand);
@@ -152,7 +141,7 @@ const mainApp = () => {
             default:
                 _result = 'Unknown command. Cannot compute.';
         }
-        return _result.length > 16 ? _result.slice(0, -1) : _result;
+        return _result.length > 13 ? _result.slice(0, 13) : _result;
     }
     allBttns.forEach((bttn) => bttn.addEventListener('click', handleBttnClick));
 };

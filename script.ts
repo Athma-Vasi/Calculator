@@ -1,6 +1,6 @@
 const mainApp = () => {
 	const allBttns: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.bttn')
-	const displayElement: HTMLInputElement | null = document.querySelector('.display')
+	const displayElement: HTMLDivElement | null = document.querySelector('.display')
 	const decimalBttn: HTMLButtonElement | null = document.querySelector('.bttn-decimal')
 
 	let firstOperand = ''
@@ -10,22 +10,20 @@ const mainApp = () => {
 
 	let secondNumberFlag = false //if false == NOT a secondNumber, true == YES a secondNumber
 
-	const symbolsArr = ['CE', 'C', '/', '*', '-', '+', '=', '%']
+	const symbolsArr = ['AC', '/', '*', '-', '+', '=', '%']
 
 	function handleBttnClick(this: HTMLButtonElement) {
 		const { textContent: bttnValue } = this
-		if (displayElement) displayElement.value = bttnValue ?? ''
+		if (displayElement) displayElement.textContent = bttnValue ?? ''
 
 		if (this.classList.contains('operator')) {
 			if (bttnValue === '+/-') plusMinusFN()
 
 			if (symbolsArr.includes(`${bttnValue}`)) {
-				if (displayElement) displayElement.value = ''
+				if (displayElement) displayElement.textContent = ''
 			}
 
-			if (bttnValue === 'CE') clearDisplayFN(displayElement)
-
-			if (bttnValue === 'C') clearAllFN(displayElement)
+			if (bttnValue === 'AC') clearAllFN(displayElement)
 
 			if (!firstOperand && !secondOperand) return
 			else if (firstOperand && !secondOperand) {
@@ -41,7 +39,7 @@ const mainApp = () => {
 			if (firstOperand && secondOperand && operator) {
 				if (bttnValue !== '=') {
 					result = solveFN()
-					if (displayElement) displayElement.value = result
+					if (displayElement) displayElement.textContent = result
 					operator = bttnValue ?? ''
 					firstOperand = result
 					secondOperand = ''
@@ -49,7 +47,7 @@ const mainApp = () => {
 				} else if (bttnValue === '=') {
 					result = solveFN()
 
-					if (displayElement) displayElement.value = result
+					if (displayElement) displayElement.textContent = result
 					operator = ''
 					firstOperand = result
 					secondOperand = ''
@@ -66,13 +64,13 @@ const mainApp = () => {
 				if (!firstOperand && bttnValue === '0') return null
 				else {
 					firstOperand += bttnValue ?? ''
-					if (displayElement) displayElement.value = firstOperand
+					if (displayElement) displayElement.textContent = firstOperand
 				}
 			} else {
 				if (!secondOperand && bttnValue === '0') return null
 				else {
 					secondOperand += bttnValue ?? ''
-					if (displayElement) displayElement.value = secondOperand
+					if (displayElement) displayElement.textContent = secondOperand
 				}
 			}
 		}
@@ -88,7 +86,7 @@ const mainApp = () => {
 		if (tempDisplayValue?.includes('-')) {
 			newTempDisplayValue = tempDisplayValue?.slice(1).join('')
 			if (displayElement) {
-				displayElement.value = newTempDisplayValue
+				displayElement.textContent = newTempDisplayValue
 				secondNumberFlag
 					? (secondOperand = newTempDisplayValue)
 					: (firstOperand = newTempDisplayValue)
@@ -96,7 +94,7 @@ const mainApp = () => {
 		} else {
 			newTempDisplayValue = ['-', ...(tempDisplayValue ?? '')].join('')
 			if (displayElement) {
-				displayElement.value = newTempDisplayValue
+				displayElement.textContent = newTempDisplayValue
 				secondNumberFlag
 					? (secondOperand = newTempDisplayValue)
 					: (firstOperand = newTempDisplayValue)
@@ -104,22 +102,13 @@ const mainApp = () => {
 		}
 	}
 
-	function clearDisplayFN(_displayElement: HTMLInputElement | null) {
+	function clearAllFN(_displayElement: HTMLDivElement | null) {
 		firstOperand = ''
 		secondOperand = ''
 		operator = ''
 		result = ''
 		secondNumberFlag = false
-		if (_displayElement) _displayElement.value = ''
-	}
-
-	function clearAllFN(_displayElement: HTMLInputElement | null) {
-		firstOperand = ''
-		secondOperand = ''
-		operator = ''
-		result = ''
-		secondNumberFlag = false
-		if (_displayElement) _displayElement.value = ''
+		if (_displayElement) _displayElement.textContent = ''
 	}
 
 	function solveFN(): string {
@@ -151,7 +140,7 @@ const mainApp = () => {
 				_result = 'Unknown command. Cannot compute.'
 		}
 
-		return _result.length > 16 ? _result.slice(0, -1) : _result
+		return _result.length > 13 ? _result.slice(0, 13) : _result
 	}
 
 	allBttns.forEach((bttn) => bttn.addEventListener('click', handleBttnClick))
