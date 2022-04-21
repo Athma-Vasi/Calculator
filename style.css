@@ -11,9 +11,11 @@ html {
 
 :root {
 	--clr-bkgd: hsl(186, 10%, 19%);
-	--clr-teal: hsl(186, 75%, 50%);
-	--clr-red: hsl(6, 75%, 50%);
-	--clr-yellow: hsl(42, 75%, 50%);
+	--clr-teal: hsl(186, 80%, 50%);
+	--clr-teal-dark: hsl(186, 80%, 38.2%);
+	--clr-teal-black: hsl(186, 67%, 3%);
+	--clr-green-dark: hsl(96, 100%, 23.6%);
+	--clr-yellow-dark: hsl(42, 100%, 38.2%);
 	--clr-shadow-light: hsl(186, 14%, 23%);
 	--clr-shadow-dark: hsl(186, 11%, 9%);
 }
@@ -26,24 +28,20 @@ html {
 }
 
 .title {
-	color: var(--clr-yellow);
-	display: flex;
-	justify-self: flex-start;
-	align-self: center;
+	color: var(--clr-green-dark);
 }
 
 .display {
-	outline: 1px solid saddlebrown;
 	background-color: var(--clr-bkgd);
 	outline: none;
 	border: 2px solid var(--clr-shadow-light);
-	color: var(--clr-red);
+	color: var(--clr-yellow-dark);
 	font-size: 3rem;
 	font-weight: 700;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	padding-right: 1rem;
+	padding: 0px 0.5rem;
 }
 
 .container-all {
@@ -63,9 +61,7 @@ html {
 	grid-template-rows: repeat(5, 1fr);
 	gap: 1rem;
 }
-.bttn-ac {
-	grid-column: 1/3;
-}
+
 .bttn {
 	outline: none;
 	border: none;
@@ -91,4 +87,6 @@ html {
 		inset 1.6px 2.6px 2.6px var(--clr-shadow-dark),
 		inset 2.6px 4.2px 4.2px var(--clr-shadow-dark),
 		inset 4.2px 6.9px 6.9px var(--clr-shadow-dark);
+
+	color: var(--clr-teal-dark);
 }
