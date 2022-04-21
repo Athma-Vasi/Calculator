@@ -128,7 +128,6 @@ const mainApp = () => {
     function updateOperandState(_state, _bttnValue) {
         const length1stOperand = _state.firstOperand.length;
         const length2ndOperand = _state.secondOperand.length;
-        //handle input after equals
         if (_state.newOperationFlag) {
             _state.firstOperand = '';
             _state.secondOperand = '';
