@@ -20,14 +20,24 @@ html {
 	--clr-shadow-dark: hsl(186, 11%, 9%);
 }
 
+a {
+	text-decoration: none;
+}
+
 .body {
 	font-family: sans-serif;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
+	margin: 4rem;
 }
 
 .title {
+	color: var(--clr-green-dark);
+}
+
+.link-title {
 	color: var(--clr-green-dark);
 }
 
@@ -88,5 +98,13 @@ html {
 		inset 2.6px 4.2px 4.2px var(--clr-shadow-dark),
 		inset 4.2px 6.9px 6.9px var(--clr-shadow-dark);
 
+	color: var(--clr-teal-dark);
+}
+
+footer {
+	margin-top: 2rem;
+}
+
+.link-footer {
 	color: var(--clr-teal-dark);
 }
